@@ -27,7 +27,7 @@ public class TestCyclicBarrier {
        * */
         ExecutorService pool = Executors.newFixedThreadPool(2);
 
-        /** 第二个参数 是一个函数，表示在计数清零后会执行的逻辑
+        /** 第二个参数 是一个函数，表示在达到计数后会执行的逻辑
         * */
         CyclicBarrier barrier = new CyclicBarrier(2, () -> {
             log.debug("task1 task2 finish....");
@@ -37,7 +37,7 @@ public class TestCyclicBarrier {
                log.debug("task1 begin ....");
                 try {
                     Thread.sleep(1000);
-                    barrier.await(); // 每次会减一 （2 - 1 = 1）
+                    barrier.await(); // 每次会加一 （0 + 1 = 1）
                 } catch (InterruptedException | BrokenBarrierException e) {
                     e.printStackTrace();
                 }
@@ -47,7 +47,7 @@ public class TestCyclicBarrier {
                log.debug("task2 begin ....");
                 try {
                     Thread.sleep(2000);
-                    barrier.await(); // 1 - 1 = 0
+                    barrier.await(); // 1 + 1 = 2 等于2后退出
                 } catch (InterruptedException | BrokenBarrierException e) {
                     e.printStackTrace();
                 }

@@ -36,3 +36,9 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/.idea/.gitignore
+/.idea/leetcode/editor.xml
+/.idea/encodings.xml
+/.idea/misc.xml
+/.idea/leetcode/statistics.xml
+/.idea/vcs.xml
